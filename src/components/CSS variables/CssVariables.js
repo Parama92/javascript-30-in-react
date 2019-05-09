@@ -9,9 +9,19 @@ class CssVariables extends React.Component {
         blur: 10,
         base: "#ffc600"
     }
+
+    onChange = (event) => {
+        let { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
+        value = name === 'base' ? value : `${value}px`;
+        document.documentElement.style.setProperty(`--${name}`, value);
+    }
+
     render() {
         return (
-            <Renderer {...this.state} />
+            <Renderer {...this.state} onChange={this.onChange} />
         )
     }
 }
