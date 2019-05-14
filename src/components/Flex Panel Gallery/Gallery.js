@@ -1,12 +1,38 @@
 import React from "react";
 
-import './styles.css'
+import Panel from './Panel';
+import './styles.css';
 
 class Gallery extends React.Component {
+    state = {
+        panels: [
+            {
+                id: 1,
+                text: "Hey Let's Dance"
+            },
+            {
+                id: 2,
+                text: "Give Take Receive"
+            },
+            {
+                id: 3,
+                text: "Experience It Today"
+            },
+            {
+                id: 4,
+                text: "Give All You-Can"
+            },
+            {
+                id: 5,
+                text: "Life In Motion"
+            }
+        ]
+    }
     render() {
         return (
-            <div class="panels">
-                <div class="panel panel1">
+            <div className="panels">
+                {this.state.panels.map(panel => <Panel key={panel.id} {...panel} />)}
+                {/* <div class="panel panel1">
                     <p>Hey</p>
                     <p>Let's</p>
                     <p>Dance</p>
@@ -30,7 +56,7 @@ class Gallery extends React.Component {
                     <p>Life</p>
                     <p>In</p>
                     <p>Motion</p>
-                </div>
+                </div> */}
             </div>
         )
     }
