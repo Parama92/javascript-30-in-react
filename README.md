@@ -1,6 +1,6 @@
 ## Javascript30-react
 
-Implementation of wesbos' popular course, [https://javascript30.com/](Javascript30) using React.
+Implementation of wesbos' popular course, [Javascript30](https://javascript30.com/) using React.
 
 ## Pull requests
 
