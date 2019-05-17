@@ -1,10 +1,12 @@
 import React from 'react';
 
+import MatchedCities from './MatchedCities';
 import './styles.css';
 
 class TypeAhead extends React.Component {
     state = {
         cities: [],
+        list: [],
         input: ''
     }
     componentDidMount() {
@@ -25,15 +27,17 @@ class TypeAhead extends React.Component {
             const exp = new RegExp(searchString, 'gi');
             return place.city.match(exp) || place.state.match(exp);
         })
-        console.log(matches);
+        this.setState({
+            list: matches,
+            input: searchString
+        })
     }
     render() {
         return (
             <form className="search-form">
-                <input onChange={this.handleChange} type="text" className="search" placeholder="City or State" />
+                <input onChange={this.handleChange} type="text" className="search" placeholder="City or State" value={this.state.input} />
                 <ul className="suggestions">
-                    <li>Filter for a city</li>
-                    <li>or a state</li>
+                    <MatchedCities list={this.state.list} input={this.state.input} />
                 </ul>
             </form>
         )
